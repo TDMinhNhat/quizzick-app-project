@@ -1,9 +1,8 @@
 package io.github.tdminhnhat.project.quizzick.service.entity;
 
 import io.github.tdminhnhat.project.quizzick.core.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import io.github.tdminhnhat.project.quizzick.service.enums.UserRole;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -48,7 +47,10 @@ public class User extends BaseEntity {
     @Column(name = "password", nullable = false, length = 100) @NonNull
     String password;
 
-    public User(@NonNull String firstName, @NonNull String lastName, @NonNull Boolean sex, @NonNull LocalDate birthDate, @NonNull String phoneNumber, String address, String avatar, @NonNull String username, @NonNull String email, @NonNull String password) {
+    @Enumerated(EnumType.STRING) @Column(name = "role", nullable = false, length = 50)
+    UserRole role;
+
+    public User(@NonNull String firstName, @NonNull String lastName, @NonNull Boolean sex, @NonNull LocalDate birthDate, @NonNull String phoneNumber, String address, String avatar, @NonNull String username, @NonNull String email, @NonNull String password, UserRole role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
@@ -59,5 +61,6 @@ public class User extends BaseEntity {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.role = role == null ? UserRole.USER : role;
     }
 }
