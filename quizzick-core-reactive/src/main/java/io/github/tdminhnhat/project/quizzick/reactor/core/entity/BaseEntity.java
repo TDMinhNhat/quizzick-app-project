@@ -2,6 +2,7 @@ package io.github.tdminhnhat.project.quizzick.reactor.core.entity;
 
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.*;
 import org.springframework.data.relational.core.mapping.Column;
@@ -11,6 +12,7 @@ import java.time.Instant;
 
 @Data
 @FieldDefaults(level = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public abstract class BaseEntity {
 
     @Id

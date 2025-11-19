@@ -4,13 +4,17 @@ import java.util.Collection;
 
 public interface IService<S extends Record, P extends Number> {
 
-    Object add(S request);
+    void initService() throws Exception;
 
-    Object update(P id, S request);
+    void destroyService() throws Exception;
 
-    Object delete(P id);
+    Object add(S request) throws Exception;
 
-    Object getById(P id);
+    Object update(P id, S request) throws Exception;
 
-    Collection<?> getAll();
+    Object delete(P id) throws Exception;
+
+    Object getById(P id) throws Exception;
+
+    Collection<?> getAll() throws Exception;
 }

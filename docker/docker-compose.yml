@@ -1,15 +1,14 @@
 name: quizzick-service-test
 services:
   postgresql:
-    image: postgres:15
+    image: postgres:16.11
     environment:
-      POSTGRES_USER: quizzick
-      POSTGRES_PASSWORD: quizzick
-      POSTGRES_DB: quizzick_test
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: postgres
     ports:
-      - "5433:5432"
-    volumes:
-      - pgdata_test:/var/lib/postgresql/data
+      - "5432:5432"
+    restart: always
   minio:
     image: minio/minio:latest
     environment:
@@ -18,5 +17,4 @@ services:
     command: server /data
     ports:
       - "9000:9000"
-    volumes:
-      - miniodata_test:/data
+    restart: always
