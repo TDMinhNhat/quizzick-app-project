@@ -1,31 +1,32 @@
 package io.github.tdminhnhat.project.quizzick.reactor.core.controller;
 
 import io.github.tdminhnhat.project.quizzick.reactor.core.exception.ApiNotSupportException;
+import io.github.tdminhnhat.project.quizzick.reactor.core.model.vo.BaseVo;
 import org.springframework.web.multipart.MultipartFile;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface IController<S extends Record, P extends Number> {
 
-    Mono<Object> add(S request);
+    Mono<? extends BaseVo> add(S request) throws Exception;
 
-    Mono<Object> update(P id, S request);
+    Mono<? extends BaseVo> update(P id, S request) throws Exception;
 
-    Mono<Object> delete(P id);
+    Mono<? extends BaseVo> delete(P id) throws Exception;
 
-    Mono<Object> getById(P id);
+    Mono<? extends BaseVo> getById(P id) throws Exception;
 
-    Flux<Object> getAll();
+    Flux<? extends BaseVo> getAll() throws Exception;
 
-    default Mono<Object> uploadImage(P id, MultipartFile file) {
+    default Mono<? extends BaseVo> uploadImage(P id, MultipartFile file) throws Exception {
         return Mono.error(new ApiNotSupportException("Upload image is not supported"));
     }
 
-    default Mono<Object> deleteImage(P id) {
+    default Mono<? extends BaseVo> deleteImage(P id) throws Exception {
         return Mono.error(new ApiNotSupportException("Delete image is not supported"));
     }
 
-    default Mono<Object> getImage(P id) {
+    default Mono<? extends BaseVo> getImage(P id) throws Exception {
         return Mono.error(new ApiNotSupportException("Get image is not supported"));
     }
 }
