@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.*;
 import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
