@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: quiz-service
+  data:
+    mongodb:
+      host: ${MONGODB_HOST:localhost}
+      port: ${MONGODB_PORT:27017}
+      database: ${MONGODB_DATABASE:quizzick-quiz-service}
+      username: ${MONGODB_USERNAME:mongodb}
+      password: ${MONGODB_PASSWORD:mongodb}
+server:
+  port: 11002
+  servlet:
+    context-path: /quiz

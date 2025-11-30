@@ -1,8 +1,6 @@
 package io.github.tdminhnhat.project.quizzick.reactor.core.entity;
 
 import lombok.AccessLevel;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import reactor.core.publisher.Mono;
@@ -15,13 +13,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Optional;
 
-@Data
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequiredArgsConstructor
-public class HttpResponseResult implements HttpResponse<Mono<Object>> {
-
-    HttpStatus status;
-    Object response;
+public record HttpResponseResult(HttpStatus status, Object response) implements HttpResponse<Mono<Object>> {
 
     @Override
     public int statusCode() {
@@ -61,10 +53,5 @@ public class HttpResponseResult implements HttpResponse<Mono<Object>> {
     @Override
     public HttpClient.Version version() {
         return null;
-    }
-
-    @Override
-    public Optional<String> connectionLabel() {
-        return HttpResponse.super.connectionLabel();
     }
 }
