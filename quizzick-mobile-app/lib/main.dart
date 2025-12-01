@@ -16,10 +16,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+      initialRoute: "/login",
       routes: {
-        "/login": (context) => const LoginPage()
-      },
-      home: const LoginPage()
+        "/login": (context) => const LoginPage(),
+        "/register": (context) => const LoginPage(),
+        "/": (context) => const LoginPage(),
+      }
     );
   }
 }
